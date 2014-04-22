@@ -1,0 +1,17 @@
+limon = imread ('lima_limon_picbig.jpg');
+redBand = limon(:, :, 1); 
+greenBand = limon(:, :, 2); 
+blueBand = limon(:, :, 3); 
+imshow(limon);
+redThresholdLow = 126;
+redThresholdHigh = 149;
+greenThresholdLow = 181;
+greenThresholdHigh = 204;
+blueThresholdLow = 15;
+blueThresholdHigh = 53;
+redMask =(redBand >= redThresholdLow) & (redBand <= redThresholdHigh);
+imshow(redMask);
+greenMask = (greenBand >= greenThresholdLow) & (greenBand <= greenThresholdHigh);
+blueMask = (blueBand >= blueThresholdLow) & (blueBand <= blueThresholdHigh);
+greenObjectsMask = uint8(redMask & greenMask & blueMask);
+imshow (greenObjectsMask);
